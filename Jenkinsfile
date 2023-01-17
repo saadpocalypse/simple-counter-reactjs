@@ -13,8 +13,8 @@ pipeline {
             steps {
                 echo 'Testing...'
                 snykSecurity(
-                snykInstallation: 'COMP421snyk',
-                snykTokenId: 'snyk-api-token',
+                snykInstallation: 'infoSecProject',
+                snykTokenId: 'snykToken',
                 // place other optional parameters here, for example:
                 failOnIssues: "false"
                 )
@@ -23,7 +23,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh './jenkins/scripts/deliver.sh'
-                input message: 'Finished using the web site? (Click "Proceed" to continue)'
+                input message: 'Satisfied? (Press enter to exit)'
                 sh './jenkins/scripts/kill.sh'
             }
         }
